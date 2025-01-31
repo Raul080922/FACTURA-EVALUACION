@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FACTURA_EVALUACION.Models.DetalleFactura>
+
+@{
+    ViewData["Title"] = "Detalles de Factura";
+}
+
+<h1>Detalles de Factura</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nuevo Detalle</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Factura ID</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.FacturaId</td>
+                <td>@item.Producto</td>
+                <td>@item.Cantidad</td>
+                <td>@item.Precio</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

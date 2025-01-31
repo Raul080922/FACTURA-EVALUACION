@@ -1,0 +1,40 @@
+﻿@model IEnumerable<FACTURA_EVALUACION.Models.Factura>
+
+@{
+    ViewData["Title"] = "Lista de Facturas";
+}
+
+<h1>Lista de Facturas</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Crear Nueva Factura</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Cliente</th>
+            <th>Vendedor</th>
+            <th>Método de Pago</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Fecha.ToShortDateString()</td>
+                <td>@item.ClienteId</td>
+                <td>@item.VendedorId</td>
+                <td>@item.MetodoPagoId</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

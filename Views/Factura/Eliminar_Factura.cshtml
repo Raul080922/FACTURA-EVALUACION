@@ -1,0 +1,31 @@
+﻿@model FACTURA_EVALUACION.Models.Factura
+
+@{
+    ViewData["Title"] = "Eliminar Factura";
+}
+
+<h1>Eliminar Factura</h1>
+
+<h3>¿Está seguro de que desea eliminar esta factura?</h3>
+<div>
+    <h4>Factura</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+        <dt class="col-sm-2">Fecha</dt>
+        <dd class="col-sm-10">@Model.Fecha.ToShortDateString()</dd>
+        <dt class="col-sm-2">Cliente</dt>
+        <dd class="col-sm-10">@Model.ClienteId</dd>
+        <dt class="col-sm-2">Vendedor</dt>
+        <dd class="col-sm-10">@Model.VendedorId</dd>
+        <dt class="col-sm-2">Método de Pago</dt>
+        <dd class="col-sm-10">@Model.MetodoPagoId</dd>
+    </dl>
+</div>
+
+<form asp-action="DeleteConfirmed">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
